@@ -41,9 +41,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ../:/app
+      - ../next:/app
       - /app/node_modules
-    command: bun run dev
+    command: sh -c "bun install && bun run dev"
     depends_on:
       - postgres
       - redis
