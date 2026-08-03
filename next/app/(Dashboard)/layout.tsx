@@ -5,11 +5,11 @@ import { ReactNode } from "react";
 
 export default function SidebarPage({children}: {children: React.ReactNode}) {
     return(
-        <aside>
+        <div className="flex">
             <Sidebar />
-            <main>
+            <main className="flex-1">
                 {children}
             </main>
-        </aside>
+        </div>
     )
 }
