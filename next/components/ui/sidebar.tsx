@@ -29,9 +29,9 @@ export default function Sidebar() {
                     {Nav.map(({href, name, icon: Icon}) => {
                         const isActive = pathname === href
                         return(
-                            <Link href={href} key={href} className={`link-sidebar ${isActive ? 'bg-back-active rounded-sm' : ''}`}>
-                                <Icon color={`${isActive ? '#54bd65' : '#ffffff'}`} />
-                                <h2>{name}</h2>
+                            <Link href={href} key={href} className={`cursor-pointer link-sidebar ${isActive ? 'bg-back-active rounded-sm' : ''}`}>
+                                <Icon color={`${isActive ? '#54bd65' : '#bfc1c7'}`} />
+                                <h2 className={`text-[#bfc1c7] transition-all duration-150 hover:text-[#54bd65] ${isActive ? 'text-[#ffffff]' : ''}`}>{name}</h2>
                             </Link>
                         ) 
                     })}
@@ -44,7 +44,7 @@ export default function Sidebar() {
                         <div className="flex flex-col">
                             <h3 className="text-[17px] ">Telegram Bot</h3>
                             <p className="text-[#aeb3b9] text-[12px]">Get alerts directly <br />in Telegram</p>
-                            <button className="bg-[#54c167] text-[#061b14] p-3 pl-10 pr-10 mt-3 rounded-lg border-0">Connect Bot</button>
+                            <button className="cursor-pointer bg-[#54c167] text-[#061b14] p-3 pl-10 pr-10 mt-3 rounded-lg border-0 transition-all hover:bg-[#54c145]">Connect Bot</button>
                         </div>
                     </div>
                     {/* profile */}
@@ -54,7 +54,7 @@ export default function Sidebar() {
                         </div>
                         <div className="flex flex-col ml-3">
                             <h3>John Doe</h3>
-                            <p>test@gmail.com</p>
+                            <p className="text-[#9ca0aa]">test@gmail.com</p>
                         </div>
                     </div>
                 </div>
