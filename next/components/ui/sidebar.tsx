@@ -1,4 +1,5 @@
 'use client'
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import {Activity, ChartNoAxesCombined, House, Timer, Settings, LucideIcon, User, Send} from 'lucide-react'
 import { usePathname } from "next/navigation"
@@ -21,7 +22,7 @@ export default function Sidebar() {
     return (
         <aside className="flex flex-col gap-2 pr-5 pl-5 pt-5 bg-[#080e1e] h-screen border-2 border-[#131b2c]">
             <Link href={'/'} className="flex gap-2 pt-3 pb-16 font-bold text-[20px]">
-                    <Activity color="#33d17a" />
+                    <Activity color="#42a35e" />
                     <h1 className="">Uptime Monitor</h1>
             </Link>
             <div className="flex flex-col justify-between flex-1 pb-10">
@@ -30,7 +31,7 @@ export default function Sidebar() {
                         const isActive = pathname === href
                         return(
                             <Link href={href} key={href} className={`cursor-pointer link-sidebar ${isActive ? 'bg-back-active rounded-sm' : ''}`}>
-                                <Icon color={`${isActive ? '#54bd65' : '#bfc1c7'}`} />
+                                <Icon strokeWidth={1.8} color={`${isActive ? '#54bd65' : '#bfc1c7'}`} />
                                 <h2 className={`text-[#bfc1c7] transition-all duration-150 hover:text-[#54bd65] ${isActive ? 'text-[#ffffff]' : ''}`}>{name}</h2>
                             </Link>
                         ) 
@@ -44,7 +45,7 @@ export default function Sidebar() {
                         <div className="flex flex-col">
                             <h3 className="text-[17px] ">Telegram Bot</h3>
                             <p className="text-[#aeb3b9] text-[12px]">Get alerts directly <br />in Telegram</p>
-                            <button className="cursor-pointer bg-[#54c167] text-[#061b14] p-3 pl-10 pr-10 mt-3 rounded-lg border-0 transition-all hover:bg-[#54c145]">Connect Bot</button>
+                            <Button className="cursor-pointer bg-[#54c167] text-[#061b14] p-3 pl-10 pr-10 mt-3 rounded-lg border-0 transition-all bg-[#54c167] hover:bg-[#54c167] hover:shadow-sm hover:shadow-green-500">Connect Bot</Button>
                         </div>
                     </div>
                     {/* profile */}
