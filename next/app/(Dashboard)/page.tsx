@@ -1,6 +1,11 @@
 'use client'
 import { Button } from "@/components/ui/button"
 import { Activity, LucideIcon, Monitor, CircleCheck, ChartNoAxesColumn, } from "lucide-react"
+import { MoreHorizontalIcon } from "lucide-react"
+import {  DropdownMenu,  DropdownMenuContent,  DropdownMenuItem,  DropdownMenuSeparator,  DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
+import {Table,  TableBody, TableCell, TableHead,  TableHeader, TableRow,} from "@/components/ui/table"
+
+
 
 interface StatsCartInter {
     header: string
@@ -16,6 +21,21 @@ const statscart: StatsCartInter[] = [
     {header: 'All system', title: 'Operational', icon: CircleCheck, additionally: '0% uptime', Bgicon: 'bg-[#09231f]', color: '#42a35e'},
     {header: 'Response True', title: '0ms', icon: Activity, additionally: 'Average', Bgicon: 'bg-[#15142e]', color: '#ac6ae9'},
     {header: 'Uptime (24h)', title: '0%', icon: ChartNoAxesColumn, additionally: 'All goods', Bgicon: 'bg-[#0d1838]', color: '#4b82f1'}
+]
+
+
+interface StatsCartTable {
+  namesite: string
+  bottom_name_site: string
+  url: string
+  status: 'UP' | 'Down'
+  responcetime: string
+  uptime: string
+}
+
+const StatsTable: StatsCartTable[] = [
+  {namesite: 'Lafword', bottom_name_site: 'site by Zanthera', url: 'https://Zanthera.com', status: 'UP', responcetime: '99ms', uptime: '100%'},
+
 ]
 
 
@@ -48,9 +68,45 @@ export default function Home() {
             <div className="flex flex-col border-2 border-[#0e1625] rounded-lg p-5 bg-[#080e1e]">
                 <h1>Monitors</h1>
                 
-                <div className="flex">
+                <div className="">
                     {/* stats */}
-                    
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead className="text-[#aeb3b9]">Name</TableHead>
+                          <TableHead className="text-[#aeb3b9]">URL</TableHead>
+                          <TableHead className="text-[#aeb3b9]">Status</TableHead>
+                          <TableHead className="text-[#aeb3b9]">Response Time</TableHead>
+                          <TableHead className="text-[#aeb3b9]">Uptime (24h)</TableHead>
+                          <TableHead className="text-right text-[#aeb3b9]">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      {StatsTable.map(({namesite, bottom_name_site, url, status, uptime, responcetime}) => (
+                        <TableBody>
+                          <TableRow>
+                            <TableCell className="font-bold text-[17px]">{namesite}</TableCell>
+                            <TableCell className="text-[#aeb3b9]">{url}</TableCell>
+                            <TableCell className="flex"><div className="bg-[#09231f] pl-3 pr-3 pt-2 pb-2 rounded-sm text-[#42a35e]">{status}</div></TableCell>
+                            <TableCell className="text-[#aeb3b9]">{responcetime}</TableCell>
+                            <TableCell className="">{uptime}</TableCell>
+                            <TableCell className="text-right">
+                              <DropdownMenu>
+                                <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="size-8"><MoreHorizontalIcon /><span className="sr-only">Open menu</span></Button>} />
+                                <DropdownMenuContent align="end">
+                                  <DropdownMenuItem>Edit</DropdownMenuItem>
+                                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                                  <DropdownMenuSeparator />
+                                  <DropdownMenuItem variant="destructive">
+                                    Delete
+                                  </DropdownMenuItem>
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </TableCell>
+                          </TableRow>
+                      </TableBody>
+                      ))}
+                      
+                    </Table>
                 </div>
             </div>
         </div>
