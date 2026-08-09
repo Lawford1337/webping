@@ -4,6 +4,7 @@ import { Activity, LucideIcon, Monitor, CircleCheck, ChartNoAxesColumn, } from "
 import { MoreHorizontalIcon } from "lucide-react"
 import {  DropdownMenu,  DropdownMenuContent,  DropdownMenuItem,  DropdownMenuSeparator,  DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
 import {Table,  TableBody, TableCell, TableHead,  TableHeader, TableRow,} from "@/components/ui/table"
+import { Progress } from "@/components/ui/progress"
 
 
 
@@ -17,7 +18,7 @@ interface StatsCartInter {
 }
 
 const statscart: StatsCartInter[] = [
-    {header: 'Total Monitors', title: '0', icon: Monitor, additionally: '', Bgicon: 'bg-[#09231f]', color: '#42a35e'},
+    {header: 'Total Monitors', title: '2', icon: Monitor, additionally: '', Bgicon: 'bg-[#09231f]', color: '#42a35e'},
     {header: 'All system', title: 'Operational', icon: CircleCheck, additionally: '0% uptime', Bgicon: 'bg-[#09231f]', color: '#42a35e'},
     {header: 'Response True', title: '0ms', icon: Activity, additionally: 'Average', Bgicon: 'bg-[#15142e]', color: '#ac6ae9'},
     {header: 'Uptime (24h)', title: '0%', icon: ChartNoAxesColumn, additionally: 'All goods', Bgicon: 'bg-[#0d1838]', color: '#4b82f1'}
@@ -34,7 +35,8 @@ interface StatsCartTable {
 }
 
 const StatsTable: StatsCartTable[] = [
-  {namesite: 'Lafword', bottom_name_site: 'site by Zanthera', url: 'https://Zanthera.com', status: 'UP', responcetime: '99ms', uptime: '100%'},
+  {namesite: 'Lafword', bottom_name_site: 'site by Lafword', url: 'https://lafword.com', status: 'UP', responcetime: '29ms', uptime: '72%'},
+  {namesite: 'Zanthera', bottom_name_site: 'site by Zanthera', url: 'https://Zanthera.com', status: 'UP', responcetime: '19ms', uptime: '40%'},
 
 ]
 
@@ -65,13 +67,15 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-            <div className="flex flex-col border-2 border-[#0e1625] rounded-lg p-5 bg-[#080e1e]">
-                <h1>Monitors</h1>
-                
-                <div className="">
+            <div className="flex flex-col border-2 border-[#0e1625] rounded-lg bg-[#080e1e]">
+                <div className="p-3 border-b-2 border-[#0e1625]">
+                  <h1 className="mt-5 ml-5 mr-5">Monitors</h1>
+                </div>
+                <div className="pb-5 pl-5 pr-5">
                     {/* stats */}
-                    <Table>
-                      <TableHeader>
+                    <Table className="bg-[#020916] rounded-lg">
+                      {/* header stats monitor */}
+                      <TableHeader className="bg-[#0e1625] rounded-t-lg">
                         <TableRow>
                           <TableHead className="text-[#aeb3b9]">Name</TableHead>
                           <TableHead className="text-[#aeb3b9]">URL</TableHead>
@@ -81,14 +85,20 @@ export default function Home() {
                           <TableHead className="text-right text-[#aeb3b9]">Actions</TableHead>
                         </TableRow>
                       </TableHeader>
+                      {/* Sites */}
                       {StatsTable.map(({namesite, bottom_name_site, url, status, uptime, responcetime}) => (
-                        <TableBody>
+                        <TableBody key={namesite}>
                           <TableRow>
                             <TableCell className="font-bold text-[17px]">{namesite}</TableCell>
                             <TableCell className="text-[#aeb3b9]">{url}</TableCell>
                             <TableCell className="flex"><div className="bg-[#09231f] pl-3 pr-3 pt-2 pb-2 rounded-sm text-[#42a35e]">{status}</div></TableCell>
                             <TableCell className="text-[#aeb3b9]">{responcetime}</TableCell>
-                            <TableCell className="">{uptime}</TableCell>
+                            <TableCell className="">
+                              <div className="flex flex-col justify-between">
+                                <span>{uptime}</span>
+                                <Progress className="h-1.5" value={parseFloat(uptime)}></Progress>
+                              </div>
+                            </TableCell>
                             <TableCell className="text-right">
                               <DropdownMenu>
                                 <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="size-8"><MoreHorizontalIcon /><span className="sr-only">Open menu</span></Button>} />
