@@ -40,6 +40,12 @@ const StatsTable: StatsCartTable[] = [
 
 ]
 
+const colorstatus = (status: string) => {
+  if(status === 'Up') return 'bg-[#09231f]'
+  if(status === 'Down') return 'bg-[#2c1d2bss]'
+  return 'bg-[#222226]'
+}
+
 
 export default function Home() {
     return (
@@ -91,7 +97,7 @@ export default function Home() {
                           <TableRow>
                             <TableCell className="font-bold text-[17px]">{namesite}</TableCell>
                             <TableCell className="text-[#aeb3b9]">{url}</TableCell>
-                            <TableCell className="flex"><div className="bg-[#09231f] pl-3 pr-3 pt-2 pb-2 rounded-sm text-[#42a35e]">{status}</div></TableCell>
+                            <TableCell className="flex"><div className={`${colorstatus} pl-3 pr-3 pt-2 pb-2 rounded-sm text-[#42a35e]`}>{status}</div></TableCell>
                             <TableCell className="text-[#aeb3b9]">{responcetime}</TableCell>
                             <TableCell className="">
                               <div className="flex flex-col justify-between">
