@@ -36,13 +36,13 @@ interface StatsCartTable {
 
 const StatsTable: StatsCartTable[] = [
   {namesite: 'Lafword', bottom_name_site: 'site by Lafword', url: 'https://lafword.com', status: 'UP', responcetime: '29ms', uptime: '72%'},
-  {namesite: 'Zanthera', bottom_name_site: 'site by Zanthera', url: 'https://Zanthera.com', status: 'UP', responcetime: '19ms', uptime: '40%'},
+  {namesite: 'Zanthera', bottom_name_site: 'site by Zanthera', url: 'https://Zanthera.com', status: 'Down', responcetime: '19ms', uptime: '40%'},
 
 ]
 
 const colorstatus = (status: string) => {
-  if(status === 'Up') return 'bg-[#09231f]'
-  if(status === 'Down') return 'bg-[#2c1d2bss]'
+  if(status === 'UP') return 'bg-[#09231f] text-[#42a35e]'
+  if(status === 'Down') return 'bg-[#3b1e2b] text-[#df5b5f] '
   return 'bg-[#222226]'
 }
 
@@ -92,17 +92,17 @@ export default function Home() {
                         </TableRow>
                       </TableHeader>
                       {/* Sites */}
-                      {StatsTable.map(({namesite, bottom_name_site, url, status, uptime, responcetime}) => (
-                        <TableBody key={namesite}>
-                          <TableRow>
+                      <TableBody>
+                        {StatsTable.map(({namesite, bottom_name_site, url, status, uptime, responcetime}) => (
+                          <TableRow key={namesite}>
                             <TableCell className="font-bold text-[17px]">{namesite}</TableCell>
                             <TableCell className="text-[#aeb3b9]">{url}</TableCell>
-                            <TableCell className="flex"><div className={`${colorstatus} pl-3 pr-3 pt-2 pb-2 rounded-sm text-[#42a35e]`}>{status}</div></TableCell>
+                            <TableCell className="flex"><div className={`${colorstatus(status)} pl-3 pr-3 pt-2 pb-2 rounded-sm`}>{status}</div></TableCell>
                             <TableCell className="text-[#aeb3b9]">{responcetime}</TableCell>
                             <TableCell className="">
                               <div className="flex flex-col justify-between">
                                 <span>{uptime}</span>
-                                <Progress className="h-1.5" value={parseFloat(uptime)}></Progress>
+                                <Progress suppressHydrationWarning className="h-1.5" value={parseFloat(uptime)}></Progress>
                               </div>
                             </TableCell>
                             <TableCell className="text-right">
@@ -119,9 +119,8 @@ export default function Home() {
                               </DropdownMenu>
                             </TableCell>
                           </TableRow>
+                        ))}
                       </TableBody>
-                      ))}
-                      
                     </Table>
                 </div>
             </div>
