@@ -10,6 +10,7 @@ export default function Monitors() {
     const [Active, setActive] = useState<ActiveMenu>('All Status')
     return (
         <div className="flex flex-col ml-7 mr-7 mt-4 gap-10">
+            {/* header */}
             <div className="flex justify-between">
                 <div className="flex flex-col">
                     <h1 className="text-[25px] ">Monitors</h1>
@@ -17,6 +18,7 @@ export default function Monitors() {
                 </div>
                 <Button variant='secondary' size={'lg'} className="pl-5 pr-5 pt-5 pb-5 bg-[#54c167] hover:bg-[#54c167] hover:shadow-sm hover:shadow-green-500">+ Add Monitor</Button>
             </div>
+            {/* search and dropdown */}
             <div className="flex justify-between">
                 <div className="flex gap-3 border-2 border-[#0e1625] p-3 rounded-lg w-[350px]">
                     <Search />
@@ -35,6 +37,8 @@ export default function Monitors() {
                     </DropdownMenu>
                 </div>
             </div>
+            {/* monitors */}
+            
         </div>
     )
 }
