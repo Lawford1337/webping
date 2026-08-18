@@ -7,6 +7,7 @@
 @theme inline {
   /* my colors */
   --color-back-active: #0d1e24;
+  --color-colborder: #0e1625;
   /* my colors */
   --font-sans-roboto: var(--font-roboto);
   --color-background: var(--background);
