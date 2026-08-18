@@ -1,7 +1,6 @@
 'use client'
 
-import Sidebar from "@/components/ui/sidebar";
-import { ReactNode } from "react";
+import Sidebar from "@/components/feature/sidebar";
 
 export default function SidebarPage({children}: {children: React.ReactNode}) {
     return(
