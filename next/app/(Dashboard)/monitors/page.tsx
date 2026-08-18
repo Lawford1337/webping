@@ -1,6 +1,6 @@
 'use client'
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, } from "@/components/ui/dropdown-menu";
 import { Search, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -38,7 +38,7 @@ export default function Monitors() {
                 </div>
             </div>
             {/* monitors */}
-            
+                        
         </div>
     )
 }
