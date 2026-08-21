@@ -87,7 +87,7 @@ export default function Login() {
                         </div>
                         <div className="">
                             <Field className="">
-                                <FieldLabel htmlFor="inline-end-input">Input</FieldLabel>
+                                <FieldLabel htmlFor="inline-end-input">Password</FieldLabel>
                                 <InputGroup className="border-2 p-5">
                                   <InputGroupInput
                                     id="inline-end-input"
