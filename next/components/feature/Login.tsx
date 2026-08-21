@@ -1,8 +1,11 @@
 'use client'
-import { Activity, LucideIcon, Zap, Shield, ChartNoAxesColumn } from "lucide-react"
+import { Activity, LucideIcon, Zap, Shield, ChartNoAxesColumn, EyeOffIcon, Eye, Mail, } from "lucide-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
+import { InputGroup, InputGroupInput, InputGroupAddon } from "@/components/ui/input-group"
 
 interface IconsAuthForm {
     title: string
@@ -18,6 +21,7 @@ const IconAuth: IconsAuthForm[] = [
 ]
 
 export default function Login() {
+    const [showpass, setShowpass] = useState(false)
     return (
         <div className="flex flex-col flex-1 bg-[#03080d] p-10">
             {/* header */}
@@ -32,8 +36,8 @@ export default function Login() {
                 </div>
             </div>
             {/* form register */}
-            <div className="flex pl-10 pr-10">
-                <div className="flex-1 flex-col">
+            <div className="flex gap-65 pl-10 pr-10">
+                <div className="flex flex-col">
                     <div className="flex pt-5 flex-col">
                         {/* left title */}
                         <div className="flex justify-start mb-5">
@@ -62,23 +66,57 @@ export default function Login() {
                     </div>
                 </div>
                 {/* auth */}
-                <div className="flex">
-                    <div className="flex flex-col p-10 border-1 bg-[#070d13] border-colborder">
+                <div className="flex flex-2">
+                    <div className="flex flex-2 flex-col gap-8 p-12 rounded-2xl border-1 border-transparent bg-origin-border [background-clip:padding-box,border-box] [background-image:linear-gradient(#070d13,#070d13),linear-gradient(to_top_right,#141d27_50%,#03c34e_100%)] [box-shadow:12px_-12px_35px_-5px_rgba(3,195,78,0.4)]">
                         {/* title */}
                         <div className="flex flex-col text-start gap-3">
                             <h1 className="text-2xl">Welcome back!</h1>
                             <p className="text-sm font-normal">Log in to your account to continue</p>
                         </div>
                         {/* email & pass */}
-                        <div className="flex flex-col gap-3">
+                        <div className="">
                             <Field>
-                                <FieldLabel htmlFor="input-field-username">Username</FieldLabel>
+                                <FieldLabel htmlFor="input-field-email">Email</FieldLabel>
                                 <Input
-                                  id="input-field-username"
-                                  type="text"
-                                  placeholder="Enter your username"
+                                  id="input-field-Email"
+                                  className="border-2 p-5"
+                                  type="email"
+                                  placeholder="john@example.com"
                                 />
                             </Field>
+                        </div>
+                        <div className="">
+                            <Field className="">
+                                <FieldLabel htmlFor="inline-end-input">Input</FieldLabel>
+                                <InputGroup className="border-2 p-5">
+                                  <InputGroupInput
+                                    id="inline-end-input"
+                                    className=""
+                                    type={showpass ? "password" : 'text'}
+                                    placeholder="Enter password"
+                                  />
+                                  <InputGroupAddon onClick={() => setShowpass(!showpass)} align="inline-end">
+                                    {showpass ? <EyeOffIcon /> : <Eye />}
+                                  </InputGroupAddon>
+                                </InputGroup>
+                            </Field>
+                        </div>
+                        <div className="flex justify-start">
+                            <div className="">
+                                <input className="" type='checkbox' /> Remember me
+                            </div>
+                        </div>
+                        <Button className={'bg-auth-green hover:bg-auth-green p-7 text-lg text-white shadow-[0_0_4px_#028837] border-none hover:shadow-[0_0_10px_#028837] '}>Log In</Button>
+                        <div className="flex gap-5 items-center">
+                            <div className="bg-[#141b22] rounded-lg h-1 w-full"></div>
+                            <p>or</p>
+                            <div className="bg-[#141b22] rounded-lg h-1 w-full"></div>
+                        </div>
+                        <div className="flex justify-center items-center rounded-lg border-2 border-[#1d242d] p-4">
+                            <div className="flex gap-3 justify-center items-center text-lg">
+                                <Mail size={25} color="#03c34e"/>
+                                <h3 className="">Continue with Mail</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
